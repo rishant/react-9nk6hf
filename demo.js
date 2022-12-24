@@ -15,6 +15,7 @@ import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Checkbox from '@mui/material/Checkbox';
 import ListItemText from '@mui/material/ListItemText';
+import Chip from '@mui/material/Chip';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -92,15 +93,22 @@ export default function FloatingActionButtons() {
       </Box>
       <Box>
         <FormControl sx={{ m: 1, width: 300 }}>
-          <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+          <InputLabel id="demo-multiple-checkbox-label">Controls</InputLabel>
           <Select
             labelId="demo-multiple-checkbox-label2"
             id="demo-multiple-checkbox"
             multiple
             value={personName}
             onChange={multioSelectHandleChange}
-            input={<OutlinedInput label="Tag" />}
-            renderValue={(selected) => selected.join(', ')}
+            input={<OutlinedInput label="Controls" />}
+            // renderValue={(selected) => selected.join(', ')}
+            renderValue={(selected) => (
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                {selected.map((value) => (
+                  <Chip key={value} label={value} />
+                ))}
+              </Box>
+            )}
             MenuProps={MenuProps}
           >
             {customControlList.map((customControl) => (
