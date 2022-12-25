@@ -19,6 +19,13 @@ import Chip from '@mui/material/Chip';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import Button from '@mui/material/Button';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -57,7 +64,36 @@ export default function FloatingActionButtons() {
 
   return (
     <>
-      <Grid container sx={{ width: '100%', border: '2px solid gray' }}>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              OneFAR
+            </Typography>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <AccountCircleIcon />
+          </Toolbar>
+        </AppBar>
+      </Box>
+      <Grid container sx={{ width: '100%', hight: '50px' }}>
+        <br />
+      </Grid>
+      <Grid
+        container
+        sx={{
+          width: '100%',
+          border: '2px solid gray',
+          backgroundColor: '#f1eaeb9e',
+        }}
+      >
         <Box display="flex" justifyContent="flex-start">
           <Typography
             variant="h4"
@@ -90,6 +126,8 @@ export default function FloatingActionButtons() {
           <Fab color="primary" aria-label="add">
             <SettingsBackupRestoreIcon fontSize="medium" />
           </Fab>
+        </Box>
+        <Box display="flex" justifyContent="flex-end">
           <FormControlLabel
             control={<Switch defaultChecked />}
             label="Milestone View"
@@ -115,7 +153,12 @@ export default function FloatingActionButtons() {
       </Grid>
       <Grid
         container
-        sx={{ width: '100%', border: '2px solid gray', height: '300px' }}
+        sx={{
+          width: '100%',
+          border: '2px solid gray',
+          height: '300px',
+          backgroundColor: '#faedf352',
+        }}
       >
         <Box>
           <FormControl sx={{ m: 1, width: 300 }}>
