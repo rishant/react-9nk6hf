@@ -23,8 +23,21 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import Button from '@mui/material/Button';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import HomeIcon from '@mui/icons-material/Home';
+import BuildIcon from '@mui/icons-material/Build';
+import BlurLinearIcon from '@mui/icons-material/BlurLinear';
+import DonutLargeIcon from '@mui/icons-material/DonutLarge';
+import DonutSmallIcon from '@mui/icons-material/DonutSmall';
+import YoutubeSearchedForIcon from '@mui/icons-material/YoutubeSearchedFor';
+import DoneIcon from '@mui/icons-material/Done';
+import VpnLockIcon from '@mui/icons-material/VpnLock';
+import SettingsIcon from '@mui/icons-material/Settings';
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -62,6 +75,24 @@ export default function FloatingActionButtons() {
     );
   };
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const menuIconOpen = Boolean(anchorEl);
+  const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const menuIconHandleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const [userIconAnchorEl, setUserIconAnchorEl] = React.useState(null);
+  const userIconOpen = Boolean(userIconAnchorEl);
+  const userIconHandleMenuClick = (event) => {
+    setUserIconAnchorEl(event.currentTarget);
+  };
+  const userIconHandleClose = () => {
+    setUserIconAnchorEl(null);
+  };
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -76,10 +107,139 @@ export default function FloatingActionButtons() {
               color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}
+              onClick={handleMenuClick}
             >
               <MenuIcon />
             </IconButton>
-            <AccountCircleIcon />
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={menuIconOpen}
+              onClose={menuIconHandleClose}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}
+            >
+              <MenuItem onClick={menuIconHandleClose}>
+                <HomeIcon
+                  fontSize="small"
+                  color="primary"
+                  style={{ paddingRight: '6px' }}
+                />
+                Home
+              </MenuItem>
+              <MenuItem onClick={menuIconHandleClose}>
+                <BuildIcon
+                  fontSize="small"
+                  sx={{ color: 'rgb(156, 39, 176)' }}
+                  style={{ paddingRight: '6px' }}
+                />
+                Shack Builder
+              </MenuItem>
+              <MenuItem onClick={menuIconHandleClose}>
+                <BlurLinearIcon
+                  fontSize="small"
+                  color="action"
+                  style={{ paddingRight: '6px' }}
+                />
+                E6 Counter View
+              </MenuItem>
+              <MenuItem onClick={menuIconHandleClose}>
+                <DonutLargeIcon
+                  fontSize="small"
+                  color="error"
+                  style={{ paddingRight: '6px' }}
+                />
+                My FA
+              </MenuItem>
+              <MenuItem onClick={menuIconHandleClose}>
+                <DonutSmallIcon
+                  fontSize="small"
+                  color="primary"
+                  style={{ paddingRight: '6px' }}
+                />
+                Auto FA
+              </MenuItem>
+              <MenuItem onClick={menuIconHandleClose}>
+                <YoutubeSearchedForIcon
+                  fontSize="small"
+                  color="secondary"
+                  style={{ paddingRight: '6px' }}
+                />
+                Auto Triage
+              </MenuItem>
+              <MenuItem onClick={menuIconHandleClose}>
+                <AssignmentIcon
+                  fontSize="small"
+                  color="error"
+                  style={{ paddingRight: '6px' }}
+                />
+                TDD Rules
+              </MenuItem>
+              <MenuItem onClick={menuIconHandleClose}>
+                <DoneIcon
+                  fontSize="small"
+                  color="primary"
+                  style={{ paddingRight: '6px' }}
+                />
+                Test Results
+              </MenuItem>
+              <MenuItem onClick={menuIconHandleClose}>
+                <VpnLockIcon
+                  fontSize="small"
+                  color="primary"
+                  style={{ paddingRight: '6px' }}
+                />
+                VM Management
+              </MenuItem>
+              <MenuItem onClick={menuIconHandleClose}>
+                <SettingsIcon
+                  fontSize="small"
+                  color="warning"
+                  style={{ paddingRight: '6px' }}
+                />
+                Project Settings
+              </MenuItem>
+            </Menu>
+
+            <AccountCircleIcon
+              sx={{ mr: 2 }}
+              onClick={userIconHandleMenuClick}
+            />
+            <Menu
+              id="user-menu"
+              anchorEl={userIconAnchorEl}
+              open={userIconOpen}
+              onClose={userIconHandleClose}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}
+            >
+              <MenuItem onClick={userIconHandleClose}>
+                <AccountCircleIcon
+                  fontSize="small"
+                  color="primary"
+                  style={{ paddingRight: '6px' }}
+                />
+                Rishant Gupta
+              </MenuItem>
+              <MenuItem onClick={userIconHandleClose}>
+                <SettingsIcon
+                  fontSize="small"
+                  color="action"
+                  style={{ paddingRight: '6px' }}
+                />
+                User Preference
+              </MenuItem>
+              <MenuItem onClick={userIconHandleClose}>
+                <PowerSettingsNewIcon
+                  fontSize="small"
+                  color="error"
+                  style={{ paddingRight: '6px' }}
+                />
+                Logout
+              </MenuItem>
+            </Menu>
           </Toolbar>
         </AppBar>
       </Box>
