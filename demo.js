@@ -25,7 +25,8 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import HomeIcon from '@mui/icons-material/Home';
@@ -202,10 +203,12 @@ export default function FloatingActionButtons() {
               </MenuItem>
             </Menu>
 
-            <AccountCircleIcon
-              sx={{ mr: 2 }}
-              onClick={userIconHandleMenuClick}
-            />
+            <Tooltip title="Account Settings">
+              <AccountCircleIcon
+                sx={{ mr: 2 }}
+                onClick={userIconHandleMenuClick}
+              />
+            </Tooltip>
             <Menu
               id="user-menu"
               anchorEl={userIconAnchorEl}
@@ -280,10 +283,10 @@ export default function FloatingActionButtons() {
           <Fab color="primary" aria-label="add" disabled>
             <DeleteIcon fontSize="small" />
           </Fab>
-          <Fab color="primary" aria-label="add">
+          <Fab color="success" aria-label="add">
             <PlayArrowIcon fontSize="small" />
           </Fab>
-          <Fab color="primary" aria-label="add">
+          <Fab color="action" aria-label="add">
             <SettingsBackupRestoreIcon fontSize="medium" />
           </Fab>
         </Box>
